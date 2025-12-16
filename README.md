@@ -21,3 +21,13 @@ This repository contains examples of API testing using Postman collections and N
 
 ## Notes
 Public demo APIs are used for testing purposes.
+
+## How to Run (Newman)
+
+### Requirements
+- Node.js (v18+)
+- Newman
+
+### Install Newman
+```bash
+npm install -g newman
