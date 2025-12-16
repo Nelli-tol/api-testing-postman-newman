@@ -30,4 +30,4 @@ Public demo APIs are used for testing purposes.
 
 ### Install Newman
 ```bash
-npm install -g newman
+npm install -g newman’’’
