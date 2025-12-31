@@ -17,23 +17,17 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: "20"
-          cache: "npm"
 
-      - name: Install dependencies
+      - name: Install Newman + HTML reporter
         run: |
-          if [ -f package-lock.json ]; then
-            npm ci
-          else
-            npm install
-          fi
+          npm install -g newman newman-reporter-htmlextra
 
-      - name: Run API collection (Newman)
+      - name: Run API collection
         run: |
-          mkdir -p newman
-          npx newman run collections/reqres_api.postman_collection.json \
-            -e collections/reqres_environment.postman_environment.json \
+          newman run collections/reqres_api.postman_collection.json \
+            -e collections/reqres_environment.json \
             --reporters cli,htmlextra \
-            --reporter-htmlextra-export newman/newman-report.html \
+            --reporter-htmlextra-export newman-report.html \
             --reporter-htmlextra-title "ReqRes API Tests"
 
       - name: Upload HTML report
@@ -41,4 +35,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: newman-html-report
-          path: newman/newman-report.html
+          path: newman-report.html
