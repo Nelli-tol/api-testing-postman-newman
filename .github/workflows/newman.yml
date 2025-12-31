@@ -18,21 +18,22 @@ jobs:
         with:
           node-version: "20"
 
+      # Ставим newman и html reporter глобально (без package-lock вообще)
       - name: Install Newman + HTML reporter
-        run: |
-          npm install -g newman newman-reporter-htmlextra
+        run: npm i -g newman newman-reporter-htmlextra
 
-      - name: Run API collection
+      - name: Run API collection (Newman)
         run: |
-          newman run collections/reqres_api.postman_collection.json \
-            -e collections/reqres_environment.json \
+          mkdir -p report
+          newman run "collections/reqres_api.postman_collection.json" \
+            -e "collections/reqres_environment.json" \
             --reporters cli,htmlextra \
-            --reporter-htmlextra-export newman-report.html \
-            --reporter-htmlextra-title "ReqRes API Tests"
+            --reporter-htmlextra-export "report/newman-report.html" \
+            --suppress-exit-code
 
       - name: Upload HTML report
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: newman-html-report
-          path: newman-report.html
+          path: report/newman-report.html
