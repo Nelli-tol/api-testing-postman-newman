@@ -1,0 +1,38 @@
+name: Newman API Tests
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  newman:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install Newman + HTML reporter
+        run: |
+          npm install -g newman newman-reporter-htmlextra
+
+      - name: Run API collection
+        run: |
+          newman run collections/reqres_api.postman_collection.json \
+            -e collections/reqres_environment.postman_environment.json \
+            --reporters cli,htmlextra \
+            --reporter-htmlextra-export newman-report.html \
+            --reporter-htmlextra-title "ReqRes API - Newman Report"
+
+      - name: Upload HTML report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: newman-html-report
+          path: newman-report.html
