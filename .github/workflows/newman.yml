@@ -17,12 +17,11 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: "20"
-          cache: "npm"
 
       - name: Install dependencies
-        run: npm ci
+        run: npm install
 
-      - name: Run API collection (Newman)
+      - name: Run API collection
         run: |
           npx newman run collections/reqres_api.postman_collection.json \
             -e collections/reqres_environment.postman_environment.json \
