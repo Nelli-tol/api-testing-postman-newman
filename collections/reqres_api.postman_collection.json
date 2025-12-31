@@ -9,7 +9,7 @@
       "request": {
         "method": "GET",
         "url": {
-          "raw": "https://reqres.in/api/users?page=2",
+          "raw": "{{base_url}}/api/users?page=2",
           "protocol": "https",
           "host": ["reqres", "in"],
           "path": ["api", "users"],
