@@ -18,13 +18,13 @@ This repository demonstrates REST API testing using **Postman collections**, **e
 
 ## Project Structure
 
-- `collections/` — Postman collection + environment  
+- `collections/` - Postman collection + environment  
   - `reqres_api.postman_collection.json`  
   - `reqres_environment.postman_environment.json`
-- `docs/` — test strategy / notes
+- `docs/` - test strategy / notes
   - `api_test_strategy.md`
 - `.github/workflows/newman.yml` — CI pipeline running Newman
-- `package.json` — Newman + reporter dependencies and scripts
+- `package.json` - Newman + reporter dependencies and scripts
 
 ---
 
