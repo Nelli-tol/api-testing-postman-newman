@@ -1,0 +1,13 @@
+{
+  "name": "api-testing-postman-newman",
+  "version": "1.0.0",
+  "private": true,
+  "description": "API testing using Postman collections + Newman CLI with HTML reporting and GitHub Actions CI.",
+  "scripts": {
+    "test:api": "newman run collections/reqres_api.postman_collection.json -e collections/reqres_environment.postman_environment.json --reporters cli,htmlextra --reporter-htmlextra-export newman-report.html --reporter-htmlextra-title \"ReqRes API Tests\""
+  },
+  "devDependencies": {
+    "newman": "^6.2.1",
+    "newman-reporter-htmlextra": "^1.23.1"
+  }
+}
