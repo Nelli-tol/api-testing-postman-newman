@@ -1,44 +1,41 @@
 # API Testing with Postman & Newman
 
-This repository contains examples of API testing using Postman collections and Newman CLI execution.
+This repository demonstrates REST API testing using **Postman collections**, **environment variables**, and **Newman** for CLI execution with **HTML reporting** and **GitHub Actions CI**.
 
-## Scope
-- REST API functional testing
-- Positive and negative scenarios
-- Request validation and response assertions
-- Environment-based execution
-- Command-line execution using Newman
-
-## Tools
-- Postman
-- Newman
-- REST API
-- JSON
-
-## Project Structure
-- `collections/` — Postman collections and environments
-- `docs/` — API test strategy and notes
-
-## Notes
-Public demo APIs are used for testing purposes.
+> Demo API: ReqRes (public REST API for testing)
 
 ---
 
-## How to Run (Newman)
+## What’s Included
 
-### Requirements
-- Node.js (v18+)
-- Newman
+- Postman **collection** with functional + negative tests (assertions in Tests tab)
+- Postman **environment** with `base_url`
+- Newman CLI runs locally and in **GitHub Actions**
+- HTML report generated via `newman-reporter-htmlextra` (uploaded as CI artifact)
+- Simple API test strategy document
 
-### Install Newman
+---
+
+## Project Structure
+
+- `collections/` — Postman collection + environment  
+  - `reqres_api.postman_collection.json`  
+  - `reqres_environment.postman_environment.json`
+- `docs/` — test strategy / notes
+  - `api_test_strategy.md`
+- `.github/workflows/newman.yml` — CI pipeline running Newman
+- `package.json` — Newman + reporter dependencies and scripts
+
+---
+
+## Requirements
+
+- Node.js 18+ (or 20+)
+- npm
+
+---
+
+## Setup
+
 ```bash
-npm install -g newman
-
-newman run collections/reqres_api.postman_collection.json \
-  -e collections/reqres_environment.postman_environment.json
-
-npm install -g newman-reporter-htmlextra
-
-newman run collections/reqres_api.postman_collection.json \
-  -e collections/reqres_environment.postman_environment.json \
-  -r htmlextra
+npm install
