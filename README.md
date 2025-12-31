@@ -1,5 +1,7 @@
 # API Testing with Postman & Newman
 
+![Newman API Tests](https://github.com/Nelli-tol/api-testing-postman-newman/actions/workflows/newman.yml/badge.svg)
+
 This repository demonstrates REST API testing using **Postman collections**, **environment variables**, and **Newman** for CLI execution with **HTML reporting** and **GitHub Actions CI**.
 
 > Demo API: ReqRes (public REST API for testing)
